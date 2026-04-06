@@ -1,0 +1,35 @@
+// Import mazer Variables
+@import "./variables";
+
+// Bootstrap + Icons
+$bootstrap-icons-font-src: url('bootstrap-icons/font/fonts/bootstrap-icons.woff2') format("woff") !default;
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
+
+// Fix icon placement
+body .bi::before, [class^=bi-]::before, [class*=" bi-"]::before {
+    vertical-align: sub;
+}
+
+// Import fonts
+@import "./fonts";
+
+// // Perfect Scrollbar
+// @import "perfect-scrollbar/css/perfect-scrollbar.css";
+
+// Mazer CSS
+@import "./mazer";
+
+.sidebar-item.active .submenu {
+  max-height: 500px !important;
+}
+
+.sidebar-item.has-sub.active > .sidebar-link {
+  background: transparent !important;
+  color: #25396f !important;
+}
+
+.sidebar-item.has-sub.active > .sidebar-link span,
+.sidebar-item.has-sub.active > .sidebar-link i {
+  color: #25396f !important;
+}
