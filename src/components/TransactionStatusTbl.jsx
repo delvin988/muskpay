@@ -41,10 +41,7 @@ export default function TransactionStatusTbl() {
   const rowsPerPage = 5;
 
   const filteredData = data.filter((item) =>
-    Object.values(item)
-      .join(" ")
-      .toLowerCase()
-      .includes(search.toLowerCase())
+    Object.values(item).join(" ").toLowerCase().includes(search.toLowerCase()),
   );
 
   const indexOfLast = currentPage * rowsPerPage;
@@ -94,19 +91,7 @@ export default function TransactionStatusTbl() {
                   <td>{item.amount}</td>
                   <td>{item.paymentType}</td>
                   <td>{item.channel}</td>
-                  <td>
-                    <span
-                      className={`badge ${
-                        item.status === "Success"
-                          ? "bg-success"
-                          : item.status === "Pending"
-                          ? "bg-warning"
-                          : "bg-danger"
-                      }`}
-                    >
-                      {item.status}
-                    </span>
-                  </td>
+                  <td>{item.status}</td>
                 </tr>
               ))}
             </tbody>
@@ -119,9 +104,7 @@ export default function TransactionStatusTbl() {
             {[...Array(totalPages)].map((_, i) => (
               <li
                 key={i}
-                className={`page-item ${
-                  currentPage === i + 1 ? "active" : ""
-                }`}
+                className={`page-item ${currentPage === i + 1 ? "active" : ""}`}
               >
                 <button
                   className="page-link"
