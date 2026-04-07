@@ -203,7 +203,7 @@ export default function Sidebar({ closeSidebar }) {
                   Transactions
                 </Link>
               </li>
-              <li className="submenu-item">
+              {/* <li className="submenu-item">
                 <Link
                   to="/admin/transaction-settlements"
                   className="submenu-link"
@@ -234,7 +234,7 @@ export default function Sidebar({ closeSidebar }) {
                 >
                   Widget Jobs
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </li>
         </ul>
