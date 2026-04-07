@@ -1,19 +1,42 @@
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
-
+import { useEffect, useState } from "react";
 
 export default function MainLayout({ children }) {
+  const [showSidebar, setShowSidebar] = useState(false);
+  
+  const closeSidebar = () => {
+    document.getElementById("sidebar").classList.remove("active");
+    setShowSidebar(false);
+  };
+
   return (
     <div id="app">
       <div id="sidebar">
-        <Sidebar />
+        <Sidebar closeSidebar={closeSidebar} />
       </div>
 
       <div id="main">
+        {showSidebar && (
+          <div
+            className="sidebar-backdrop"
+            onClick={() => {
+              document.getElementById("sidebar").classList.remove("active");
+              setShowSidebar(false);
+            }}
+          ></div>
+        )}
         <header className="mb-3">
-          <a href="#" className="burger-btn d-block d-xl-none">
+          <button
+            className="burger-btn d-block d-xl-none border-0 bg-transparent"
+            onClick={() => {
+              const sidebar = document.getElementById("sidebar");
+              sidebar.classList.toggle("active");
+              setShowSidebar(sidebar.classList.contains("active"));
+            }}
+          >
             <i className="bi bi-justify fs-3"></i>
-          </a>
+          </button>
         </header>
 
         <Outlet />

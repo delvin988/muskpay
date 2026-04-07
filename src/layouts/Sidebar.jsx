@@ -2,11 +2,12 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Logo from "../assets/static/images/logo/logo.svg";
 
-export default function Sidebar() {
+export default function Sidebar({ closeSidebar }) {
   const location = useLocation();
   const [showReport, setShowReport] = useState(false);
   const [showSettlement, setShowSettlement] = useState(false);
   const [showPayments, setShowPayments] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     const toggle = document.getElementById("toggle-dark");
@@ -40,7 +41,13 @@ export default function Sidebar() {
       <div className="sidebar-header position-relative">
         <div className="d-flex justify-content-between align-items-center">
           <div className="logo">
-            <Link to="/">
+            <Link
+              to="/"
+              className="sidebar-link"
+              onClick={() => {
+                closeSidebar();
+              }}
+            >
               <img src={Logo} alt="Logo" />
             </Link>
           </div>
@@ -57,7 +64,13 @@ export default function Sidebar() {
               location.pathname === "/" ? "active" : ""
             }`}
           >
-            <Link to="/" className="sidebar-link">
+            <Link
+              to="/"
+              className="sidebar-link"
+              onClick={() => {
+                closeSidebar();
+              }}
+            >
               <i className="bi bi-grid-fill"></i>
               <span>Dashboard</span>
             </Link>
@@ -69,7 +82,13 @@ export default function Sidebar() {
               location.pathname === "/admin/balance-logs" ? "active" : ""
             }`}
           >
-            <Link to="/admin/balance-logs" className="sidebar-link">
+            <Link
+              to="/admin/balance-logs"
+              className="sidebar-link"
+              onClick={() => {
+                closeSidebar();
+              }}
+            >
               <i className="bi bi-stack"></i>
               <span>Balance Histories</span>
             </Link>
@@ -81,14 +100,22 @@ export default function Sidebar() {
               location.pathname === "/admin/balance-topups" ? "active" : ""
             }`}
           >
-            <Link to="/admin/balance-topups" className="sidebar-link">
+            <Link
+              to="/admin/balance-topups"
+              className="sidebar-link"
+              onClick={() => {
+                closeSidebar();
+              }}
+            >
               <i className="bi bi-arrow-left-right"></i>
               <span>Balance Adjustment</span>
             </Link>
           </li>
 
           {/* Settlement & Payout */}
-          <li className={`sidebar-item has-sub ${showSettlement ? "active" : ""}`}>
+          <li
+            className={`sidebar-item has-sub ${showSettlement ? "active" : ""}`}
+          >
             <a
               href="#"
               className="sidebar-link d-flex justify-content-between align-items-center"
@@ -109,6 +136,13 @@ export default function Sidebar() {
                 <Link
                   to="/admin/settlements"
                   className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                    setShowSettlement(false);
+                    closeSidebar();
+                  }}
                   style={{ color: "#0d6efd" }}
                 >
                   Request Settlements
@@ -118,6 +152,13 @@ export default function Sidebar() {
                 <Link
                   to="/admin/inquiries"
                   className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                    setShowSettlement(false);
+                    closeSidebar();
+                  }}
                   style={{ color: "#0d6efd" }}
                 >
                   Disbursements
@@ -127,7 +168,9 @@ export default function Sidebar() {
           </li>
 
           {/* Settlement & Payout */}
-          <li className={`sidebar-item has-sub ${showPayments ? "active" : ""}`}>
+          <li
+            className={`sidebar-item has-sub ${showPayments ? "active" : ""}`}
+          >
             <a
               href="#"
               className="sidebar-link d-flex justify-content-between align-items-center"
@@ -148,6 +191,13 @@ export default function Sidebar() {
                 <Link
                   to="/admin/transactions"
                   className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                      setShowPayments(false);
+                      closeSidebar();
+                  }}
                   style={{ color: "#0d6efd" }}
                 >
                   Transactions
@@ -157,6 +207,13 @@ export default function Sidebar() {
                 <Link
                   to="/admin/transaction-settlements"
                   className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                      setShowPayments(false);
+                      closeSidebar();
+                  }}
                   style={{ color: "#0d6efd" }}
                 >
                   Transaction Settlements
@@ -166,6 +223,13 @@ export default function Sidebar() {
                 <Link
                   to="/admin/widget-jobs"
                   className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                      setShowPayments(false);
+                      closeSidebar();
+                  }}
                   style={{ color: "#0d6efd" }}
                 >
                   Widget Jobs
