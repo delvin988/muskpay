@@ -4,9 +4,10 @@ import Logo from "../assets/static/images/logo/logo.svg";
 
 export default function Sidebar({ closeSidebar }) {
   const location = useLocation();
-  const [showReport, setShowReport] = useState(false);
+  const [showSetting, setSetting] = useState(false);
   const [showSettlement, setShowSettlement] = useState(false);
   const [showPayments, setShowPayments] = useState(false);
+  const [showUserManagements, setShowUserManagements] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
@@ -254,6 +255,132 @@ export default function Sidebar({ closeSidebar }) {
               <i className="bi bi-clock-history"></i>
               <span>Action Logs</span>
             </Link>
+          </li>
+
+          {/* Settings */}
+          <li
+            className={`sidebar-item has-sub ${showSetting ? "active" : ""}`}
+          >
+            <a
+              href="#"
+              className="sidebar-link d-flex justify-content-between align-items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                setSetting(!showSetting);
+              }}
+            >
+              <div>
+                <i className="bi bi-sliders"></i>
+                <span>Settings</span>
+              </div>
+              <i className="bi bi-chevron-down"></i>
+            </a>
+
+            <ul className={`submenu ${showSetting ? "active" : ""}`}>
+              <li className="submenu-item">
+                <Link
+                  to="/admin/widget-configs"
+                  className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                      setSetting(false);
+                      closeSidebar();
+                  }}
+                  style={{ color: "#0d6efd" }}
+                >
+                  Widget Configs
+                </Link>
+              </li>
+              <li className="submenu-item">
+                <Link
+                  to="/admin/webhooks"
+                  className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                      setSetting(false);
+                      closeSidebar();
+                  }}
+                  style={{ color: "#0d6efd" }}
+                >
+                  Webhooks
+                </Link>
+              </li>
+            </ul>
+          </li>
+
+          {/* User Managements */}
+          <li
+            className={`sidebar-item has-sub ${showUserManagements ? "active" : ""}`}
+          >
+            <a
+              href="#"
+              className="sidebar-link d-flex justify-content-between align-items-center"
+              onClick={(e) => {
+                e.preventDefault();
+                setShowUserManagements(!showUserManagements);
+              }}
+            >
+              <div>
+                <i className="bi bi-people-fill"></i>
+                <span>User Managements</span>
+              </div>
+              <i className="bi bi-chevron-down"></i>
+            </a>
+
+            <ul className={`submenu ${showUserManagements ? "active" : ""}`}>
+              <li className="submenu-item">
+                <Link
+                  to="/admin/roles"
+                  className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                      setShowUserManagements(false);
+                      closeSidebar();
+                  }}
+                  style={{ color: "#0d6efd" }}
+                >
+                  Roles
+                </Link>
+              </li>
+              <li className="submenu-item">
+                <Link
+                  to="/admin/permissions"
+                  className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                      setShowUserManagements(false);
+                      closeSidebar();
+                  }}
+                  style={{ color: "#0d6efd" }}
+                >
+                  Permissions
+                </Link>
+              </li>
+              <li className="submenu-item">
+                <Link
+                  to="/admin/users"
+                  className="submenu-link"
+                  onClick={() => {
+                    document
+                      .getElementById("sidebar")
+                      .classList.remove("active");
+                      setShowUserManagements(false);
+                      closeSidebar();
+                  }}
+                  style={{ color: "#0d6efd" }}
+                >
+                  Users
+                </Link>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
