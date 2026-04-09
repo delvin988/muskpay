@@ -11,9 +11,9 @@ import WidgetJob from "../pages/dashboard/payment/WidgetJob";
 import ActionLog from "../pages/dashboard/ActionLog";
 import WidgetConfig from "../pages/dashboard/setting/WidgetConfig";
 import Webhook from "../pages/dashboard/setting/Webhook";
-import Role from "../pages/dashboard/UserManagement/Role";
 import Permission from "../pages/dashboard/userManagement/Permission";
 import User from "../pages/dashboard/userManagement/User";
+import Role from "../pages/dashboard/userManagement/Role";
 
 export default function AppRouter() {
   return (
