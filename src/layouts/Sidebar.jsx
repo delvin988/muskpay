@@ -167,7 +167,7 @@ export default function Sidebar({ closeSidebar }) {
             </ul>
           </li>
 
-          {/* Settlement & Payout */}
+          {/* Payments */}
           <li
             className={`sidebar-item has-sub ${showPayments ? "active" : ""}`}
           >
@@ -203,7 +203,7 @@ export default function Sidebar({ closeSidebar }) {
                   Transactions
                 </Link>
               </li>
-              {/* <li className="submenu-item">
+              <li className="submenu-item">
                 <Link
                   to="/admin/transaction-settlements"
                   className="submenu-link"
@@ -234,8 +234,26 @@ export default function Sidebar({ closeSidebar }) {
                 >
                   Widget Jobs
                 </Link>
-              </li> */}
+              </li>
             </ul>
+          </li>
+
+          {/* Action Logs */}
+          <li
+            className={`sidebar-item ${
+              location.pathname === "/admin/action-logs" ? "active" : ""
+            }`}
+          >
+            <Link
+              to="/admin/action-logs"
+              className="sidebar-link"
+              onClick={() => {
+                closeSidebar();
+              }}
+            >
+              <i className="bi bi-clock-history"></i>
+              <span>Action Logs</span>
+            </Link>
           </li>
         </ul>
       </div>
